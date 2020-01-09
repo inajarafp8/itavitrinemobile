@@ -5,7 +5,7 @@ import api from '../services/api';
 
 import logo from '../assets/logo-itavitrine.png';
 
-export default function Login( navigation ){
+export default function Login({ navigation }){
     const [email, setEmail] = useState();
     const [cate, setCate] = useState();
 
@@ -14,11 +14,11 @@ export default function Login( navigation ){
         const response = await api.post('/sessions', {email})
         //recupera o id do usuário de dentro do response.data 
         const {_id} = response.data;
-
+         
         await AsyncStorage.setItem('user', _id);
         await AsyncStorage.setItem('cate', cate);
 
-        navigation.navigation('List');
+        navigation.navigate('List');
     }
 
     return <KeyboardAvoidingView  behavior="padding" style={styles.container}>
